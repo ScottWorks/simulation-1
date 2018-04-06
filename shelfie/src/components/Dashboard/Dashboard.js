@@ -1,8 +1,21 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import Product from '../Product/Product';
 import '../../App.css';
 
 class Dashboard extends Component {
+  constructor() {
+    super();
+  }
+
+  componentWillUpdate() {
+    this.props.getInventory();
+  }
+
+  // removeProduct() {
+  //   axios.delete(`/api/inventory/${id}`);
+  // }
+
   render() {
     const { inventory } = this.props;
 

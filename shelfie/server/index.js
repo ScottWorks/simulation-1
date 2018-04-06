@@ -11,6 +11,7 @@ const port = 4000;
 
 app.get('/api/inventory', controller.getInventory);
 app.post('/api/product', controller.addProduct);
+app.delete('/api/inventory/:id', controller.removeProduct);
 
 massive(CONNECTION_URI).then((dbInstance) => {
   app.set('db', dbInstance);

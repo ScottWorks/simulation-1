@@ -20,5 +20,17 @@ module.exports = {
         .send()
         .end();
     });
+  },
+
+  removeProduct: (req, res) => {
+    const db = req.app.get('db');
+    const { params } = req;
+
+    db.removeProduct(params).then(() => {
+      res
+        .status(200)
+        .send()
+        .end();
+    });
   }
 };

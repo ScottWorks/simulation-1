@@ -15,6 +15,10 @@ class Form extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
+  componentWillUpdate() {
+    this.props.getInventory();
+  }
+
   handleChanges() {
     this.setState({
       img: this.refs.img.value,
@@ -33,9 +37,6 @@ class Form extends Component {
 
   addProduct() {
     const { img, name, price } = this.state;
-    console.log(img);
-    console.log(name);
-    console.log(price);
 
     axios.post('/api/product', { img, name, price }).then((nodeRes) => {
       this.setState({
