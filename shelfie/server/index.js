@@ -7,18 +7,16 @@ const controller = require('./controller');
 const app = express();
 app.use(bodyParser.json());
 
-const port = 3113;
+const port = 4003;
 
 app.get('/api/inventory', controller.getInventory);
 // controller.addProduct
 app.post('/api/product', (req, res) => {
   const db = req.app.get('db');
-  const { name, price, img } = req.body;
-  console.log(name);
-  console.log(price);
-  console.log(img);
+  const product = req.body;
+  console.log(product);
 
-  db.addProduct([name, price, img]).then(() => {
+  db.addProduct(product).then(() => {
     res
       .status(200)
       .send()
