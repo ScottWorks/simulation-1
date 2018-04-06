@@ -22,7 +22,59 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.dash-form-container {
+  margin: auto;
+  align-self: center;
+  height: 100vh;
+  width: 80vw;
+  background-color: lightblue;
+}
+
+.form-container {
+  float: right;
+  background-color: #3ad886;
+  display: flex;
+  height: 650px;
+  width: 600px;
+  margin: 20px;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.form-image {
+  height: 300px;
+  width: 475px;
+  margin: auto;
+  background-color: white;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.form-buttons {
+  margin: 40px;
+}
+
+.item-container {
+  display: flex;
+  float: left;
+  margin: 20px;
+  padding: 20px;
+  width: 700px;
+  background-color: #d34735;
+  border-radius: 15px;
+}
+
+.item-text {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-left: 20px;
+}
+
+.item-text p {
+  margin-top: 1px;
 }

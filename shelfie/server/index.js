@@ -7,22 +7,10 @@ const controller = require('./controller');
 const app = express();
 app.use(bodyParser.json());
 
-const port = 4003;
+const port = 4000;
 
 app.get('/api/inventory', controller.getInventory);
-// controller.addProduct
-app.post('/api/product', (req, res) => {
-  const db = req.app.get('db');
-  const product = req.body;
-  console.log(product);
-
-  db.addProduct(product).then(() => {
-    res
-      .status(200)
-      .send()
-      .end();
-  });
-});
+app.post('/api/product', controller.addProduct);
 
 massive(CONNECTION_URI).then((dbInstance) => {
   app.set('db', dbInstance);

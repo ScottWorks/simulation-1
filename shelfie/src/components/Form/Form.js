@@ -1,44 +1,92 @@
 import React, { Component } from 'react';
-import '../../App.css';
+import axios from 'axios';
 
 class Form extends Component {
   constructor() {
     super();
     this.state = {
-      imageURL: '',
-      productName: '',
-      price: 0
+      img: '',
+      name: '',
+      price: ''
     };
 
-    this.handleImgURL = this.handleImgURL.bind(this);
+    this.handleChanges = this.handleChanges.bind(this);
+    this.removeChanges = this.removeChanges.bind(this);
+    this.addProduct = this.addProduct.bind(this);
   }
 
-  handleChange() {
+  handleChanges() {
     this.setState({
-      imageURL: this.refs.imageURL.value,
-      productName: this.refs.productName.value,
-      p: this.refs.productName.value
+      img: this.refs.img.value,
+      name: this.refs.name.value,
+      price: this.refs.price.value
+    });
+  }
+
+  removeChanges() {
+    this.setState({
+      img: '',
+      name: '',
+      price: ''
+    });
+  }
+
+  addProduct() {
+    const { img, name, price } = this.state;
+    console.log(img);
+    console.log(name);
+    console.log(price);
+
+    axios.post('/api/product', { img, name, price }).then((nodeRes) => {
+      this.setState({
+        img: '',
+        name: '',
+        price: ''
+      });
     });
   }
 
   render() {
+    const { img, name, price } = this.state;
     return (
-      <div className="App">
-        <div>
+      <div className="form-container">
+        <div className="form-image">{/* <img src= alt="{name}" /> */}</div>
+        <div className="form-input">
           <label>
-            Image URL: <input id="imageURL" type="url" ref="imageURL" />
+            Image URL:{' '}
+            <input
+              id="img"
+              type="url"
+              ref="img"
+              value={img}
+              onChange={this.handleChanges}
+            />
           </label>
           <label>
             Product Name:{' '}
-            <input id="productName" type="text" ref="productName" />
+            <input
+              id="name"
+              type="text"
+              ref="name"
+              value={name}
+              maxLength="25"
+              onChange={this.handleChanges}
+            />
           </label>
           <label>
-            Price: <input id="price" type="text" ref="price" />
+            Price:{' '}
+            <input
+              id="price"
+              type="text"
+              ref="price"
+              value={price}
+              onChange={this.handleChanges}
+            />
           </label>
         </div>
-        <div>
-          <button>Cancel</button>
-          <button>Add to Inventory</button>
+        <div className="form-buttons">
+          <button onClick={this.removeChanges}>Cancel</button>
+          <button onClick={this.addProduct}>Add to Inventory</button>
         </div>
       </div>
     );

@@ -4,12 +4,12 @@ import '../../App.css';
 
 class Dashboard extends Component {
   render() {
-    return (
-      <div className="App">
-        <h1>Dashboard</h1>
-        <Product />
-      </div>
-    );
+    const { inventory } = this.props;
+
+    const displayList = inventory.map((elem, i) => {
+      return <Product key={i} item={elem} />;
+    });
+    return <div className="App">{displayList}</div>;
   }
 }
 
