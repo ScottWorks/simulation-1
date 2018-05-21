@@ -15,9 +15,8 @@ class Form extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  componentWillUpdate() {
-    this.props.getInventory();
-  }
+  // componentWillUpdate() {
+  // }
 
   handleChanges() {
     this.setState({
@@ -45,6 +44,7 @@ class Form extends Component {
         price: ''
       });
     });
+    this.props.getInventory();
   }
 
   render() {

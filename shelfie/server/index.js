@@ -7,13 +7,14 @@ const controller = require('./controller');
 const app = express();
 app.use(bodyParser.json());
 
-const port = 4000;
-
 app.get('/api/inventory', controller.getInventory);
 app.post('/api/product', controller.addProduct);
-app.delete('/api/inventory/:id', controller.removeProduct);
+// app.delete('/api/inventory/:id', controller.removeProduct);
 
-massive(CONNECTION_URI).then((dbInstance) => {
+const port = process.env.PORT || 4000;
+massive(process.env.REACT_APP_CONNECTION_URI).then((dbInstance) => {
   app.set('db', dbInstance);
-  app.listen(port, () => console.log(`Listening to port: ${port}`));
+  app.listen(port, () => {
+    console.log(`Server listening on port ${port}.`);
+  });
 });

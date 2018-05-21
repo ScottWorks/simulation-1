@@ -4,13 +4,13 @@ import Product from '../Product/Product';
 import '../../App.css';
 
 class Dashboard extends Component {
-  constructor() {
-    super();
-  }
+  // constructor() {
+  //   super();
+  // }
 
-  componentWillUpdate() {
-    this.props.getInventory();
-  }
+  // componentWillUpdate() {
+  //   this.props.getInventory();
+  // }
 
   // removeProduct() {
   //   axios.delete(`/api/inventory/${id}`);
