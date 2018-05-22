@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 
 app.get('/api/inventory', controller.getInventory);
 app.post('/api/product', controller.addProduct);
+app.put('/api/editProduct', controller.editProduct);
 // app.delete('/api/inventory/:id', controller.removeProduct);
 
 const port = process.env.PORT || 4000;

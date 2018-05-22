@@ -15,8 +15,11 @@ class Form extends Component {
     this.addProduct = this.addProduct.bind(this);
   }
 
-  // componentWillUpdate() {
-  // }
+  componentDidUpdate(prevProps) {
+    if (prevProps.data !== this.props.data) {
+      console.log('Data properties have changed!');
+    }
+  }
 
   handleChanges() {
     this.setState({
@@ -24,6 +27,17 @@ class Form extends Component {
       name: this.refs.name.value,
       price: this.refs.price.value
     });
+  }
+
+  editProduct() {
+    const { id } = this.props;
+    const { price, name, img } = this.state;
+
+    axios
+      .put(`/api/editProduct/${id}`, { price, name, img })
+      .then((serverResponse) => {
+        console.log(serverResponse);
+      });
   }
 
   removeChanges() {

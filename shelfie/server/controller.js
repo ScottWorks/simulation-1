@@ -32,5 +32,15 @@ module.exports = {
         .send()
         .end();
     });
+  },
+
+  editProduct: (req, res) => {
+    const db = req.app.get('db');
+    const { id } = req.params;
+    const { price, name, img } = req.body;
+
+    db.editProduct([id, name, price, img]).then(() => {
+      res.status(200).send('All Good :^)');
+    });
   }
 };
